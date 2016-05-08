@@ -14,9 +14,13 @@ http.createServer(function(request, response) {
 
 		request.on('end',function () {
 			var query = qs.parse(postData);
-			console.log("data:",query);
+			console.log("post data:",query);
 			response.end();
 		});
+	}else if(method == 'GET'){
+		var query = url.parse(request.url, true).query;
+		console.log('get data:',query);
+		response.end();
 	}
 
 
